@@ -1,0 +1,270 @@
+body{
+    margin:auto
+}
+/* Header Css */
+#header{
+    height: 60px;
+    background-color: #e09c83;
+}
+
+#icon{
+    margin-left: 1%;
+    margin-top:-1%;
+    position: absolute;
+    color:#fff !important;
+}
+
+#social{
+    float: right;
+    margin-right: 1%;
+}
+
+a{
+    text-decoration: none;
+}
+
+.slogo{
+    height:50px;
+    width:50px;
+}
+
+
+/* Search Css */
+#search{
+    height: 400px;
+    background-image:url('image/food-wallpaper.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 400px;
+}
+
+#logo{
+    height:150px;
+    width:150px;
+    background-color: white;
+    border-radius: 50%;
+    margin-left: 45%;
+    margin-top: 1%;
+    position: absolute;
+    font-size:80px;
+    color:#df7839;
+    animation: movelogo 20s infinite;
+}
+
+@keyframes movelogo {
+    0% {margin-left: 45%;}
+    20% {margin-left: 40%;}
+    60% {margin-left: 45%;}
+    85% {margin-left: 40%;}
+    100% {margin-left: 45%;}
+}
+
+/*
+#logo:hover{
+    transition: width  height 5s;
+    width: 250px;
+}*/
+
+#logo > span {
+    margin-left: 31%;
+    margin-top: 15%;
+    position: absolute;
+}
+
+#heading{
+    margin-left: 29%;
+    margin-top: 13%;
+    position: absolute;
+    font-size:45px;
+    color:white
+}
+
+.dropdown{
+    height:60px;
+    width:60%;
+    margin-left: 27%;
+    margin-top: 19%;
+    position: absolute;
+}
+
+select{
+    height:60px;
+    width:35%
+}
+
+.restaurantSelect{
+    width:50%
+}
+
+/* Quick Search */
+#QuickSearch{
+    width:80%;
+    margin-left:10%;
+    margin-top:3%;
+    display: inline-block
+}
+
+#QuickHeading{
+    display:block;
+    color:#4d3f3f;
+    font-size:30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-left: 2%;
+}
+
+#QuickHeading:hover{
+    color:#e22528;
+}
+
+
+#QuickSubHeading{
+    line-height: 2;
+    color:gray;
+    font-size:20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-left: 2%;
+}
+
+.tileContainer{
+    height:180px;
+    width:30%;
+    float: left;
+    margin-top: 2%;
+    margin-left: 2%;
+    box-shadow: 10px 20px 15px gray;
+    animation: dance 10s infinite
+}
+
+@keyframes dance {
+    0% {transform:rotate(-5deg)}
+    25% {transform:rotate(0deg)}
+    50% {transform:rotate(5deg)}
+    75% {transform:rotate(0deg)}
+    100% {transform:rotate(-5deg)}
+}
+
+.tileContainer:hover{
+    transform: scale(1.1);
+    /*
+    transform: scale(1.1);
+    transform:rotate(-20deg)
+    transform:skewY(-20deg)*/
+    
+}
+
+.tileComponent1{
+    width:50%;
+    float: left;
+    height:180px;
+}
+
+.tileComponent1 >img{
+    width:100%;
+    height:180px;
+}
+
+.tileComponent2{
+    width:40%;
+    float: left;
+    height:100px;
+    margin-left: 5%;
+    margin-top: 12%;
+}
+
+.componentHeading{
+    color:#ac2e31;
+    font-size: 25px;
+}
+
+.componentHeading > a{
+    color:#ac2e31 !important;
+}
+
+.componentSubHeading{
+    color:gray;
+    font-size: 15px;
+}
+
+@media screen and (max-width:1600px){
+    body{
+        background-color: skyblue;
+    }
+}
+
+@media screen and (max-width:1400px){
+    body{
+        background-color: rgb(181, 183, 184);
+    }
+}
+
+@media screen and (max-width:1200px){
+    body{
+        background-color: rgb(243, 225, 242);
+    }
+    #heading{
+        margin-left: 25%;
+        margin-top: 18%;
+    }
+    .dropdown{
+        margin-left: 27%;
+        margin-top: 25%;
+    }
+}
+
+@media screen and (max-width:1000px){
+    body{
+        background-color: rgb(237, 245, 218);
+    }
+    .tileContainer{
+        width:43%;
+    }
+    #logo{
+        margin-left: 40%;
+    }
+    #heading{
+        margin-left: 18%;
+        margin-top: 24%;
+    }
+    .dropdown{
+        margin-left: 25%;
+        margin-top: 34%;
+    }
+}
+
+@media screen and (max-width:800px){
+    body{
+        background-color: rgb(245, 221, 202);
+    }
+    .tileContainer{
+        width:90%;
+    }
+    #logo{
+        margin-left: 34%;
+    }
+    #heading{
+        margin-left: 5%;
+        margin-top: 27%;
+        font-size:35px
+    }
+    .dropdown{
+        margin-left: 25%;
+        margin-top: 38%;
+    }
+}
+
+@media screen and (max-width:600px){
+    body{
+        background-color: rgb(183, 233, 195);
+    }
+    #heading{
+        margin-left: 0%;
+        margin-top: 31%;
+        font-size:34px
+    }
+    .dropdown{
+        margin-left: 25%;
+        margin-top: 45%;
+    }
+}

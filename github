@@ -1,0 +1,17 @@
+//// first time from new folder
+> git init
+> git add .
+> git commit -m "first commit"
+> git remote add origin https://github.com/Aakashdeveloper/nov_zomato.git
+> git push -u origin master
+
+//// next all time
+> git add .
+> git commit -m "first commit"
+> git push 
+
+>  git clone https://github.com/Aakashdeveloper/edu_intern_nov
+>>> every day after class
+>>> go inside the folder using gitbash
+* Do not make any code change only copy from this folder into practice folder
+> git pull
