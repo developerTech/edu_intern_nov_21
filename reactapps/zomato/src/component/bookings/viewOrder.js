@@ -16,6 +16,17 @@ class ViewOrder extends Component{
     }
 
     render(){
+        if(sessionStorage.getItem('loginStatus') === 'loggedOut'){
+            return(
+                <>
+                    <Header/>
+                    <center>
+                        <h2>Login First To Check Order</h2>
+                    </center>
+                </>
+
+            )
+        }
         return(
             <>
                 <Header/>
@@ -26,7 +37,8 @@ class ViewOrder extends Component{
 
     //
     componentDidMount(){
-        axios.get(`${url}`).then((res) => {this.setState({orders:res.data})})
+        let email = sessionStorage.getItem('userInfo').split(',')[1]
+        axios.get(`${url}?email=${email}`).then((res) => {this.setState({orders:res.data})})
     }
 }
 

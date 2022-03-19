@@ -10,13 +10,15 @@ class PlaceOrder extends Component{
     constructor(props){
         super(props);
 
+        let userData = sessionStorage.getItem('userInfo')
+
         this.state={
             id:Math.floor(Math.random()*100000),
             hotel_name:this.props.match.params.restName,
-            name:'Aakash',
-            email:'aakash@gmail.com',
+            name: userData? userData.split(',')[0]:'',
+            email:userData? userData.split(',')[1]:'',
             cost:0,
-            phone:'6543758569',
+            phone:userData? userData.split(',')[2]:'',
             address:'Hno 28',
             menuItem:''
         }
@@ -56,6 +58,17 @@ class PlaceOrder extends Component{
     
 
     render(){
+        if(sessionStorage.getItem('loginStatus') === 'loggedOut'){
+            return(
+                <>
+                    <Header/>
+                    <center>
+                        <h2>Login First To Place Order</h2>
+                    </center>
+                </>
+
+            )
+        }
         console.log(this.state)
         return(
             <>

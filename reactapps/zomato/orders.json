@@ -19,6 +19,26 @@
       "phone": "6543758569",
       "address": "Hno 28",
       "menuItem": "23,22,21,20"
+    },
+    {
+      "id": 29231,
+      "hotel_name": "Domino's Pizza",
+      "name": "Anchal",
+      "email": "anchal@gmail.com",
+      "cost": 328,
+      "phone": "436464566",
+      "address": "Hno 28",
+      "menuItem": "1,2"
+    },
+    {
+      "id": 15398,
+      "hotel_name": "Food Adda",
+      "name": "Poonam",
+      "email": "poonam@gmail.com",
+      "cost": 518,
+      "phone": "436464566",
+      "address": "Hno 28",
+      "menuItem": "11,12"
     }
   ]
 }
