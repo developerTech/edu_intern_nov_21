@@ -375,3 +375,6 @@ npm run build
 /******UserInfo*****/
 (GET) => https://developerjwt.herokuapp.com/api/auth/userinfo
 (Header) => {'x-access-token':'token value from login'}
+
+
+https://developerpayment.herokuapp.com/paynow

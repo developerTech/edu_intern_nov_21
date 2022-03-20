@@ -39,7 +39,8 @@ class PlaceOrder extends Component{
             },
             body:JSON.stringify(obj)
         })
-        .then(this.props.history.push('/viewBooking'))
+        //.then(this.props.history.push('/viewBooking'))
+        .then(console.log('order taken'))
     }
     
     renderMenu = (data) => {
@@ -80,35 +81,43 @@ class PlaceOrder extends Component{
                             <h3>Your Order from Restaurant {this.props.match.params.restName} </h3>
                         </div>
                         <div className="panel-body">
-                            <div className="row">
-                                <div className="form-group col-md-6">
-                                    <label for="fname">Name</label>
-                                    <input id="fname" name="name" className="form-control"
-                                    value={this.state.name} onChange={this.handleChange}/>
+                            <form action="https://developerpayment.herokuapp.com/paynow" method="POST">
+                                <input type="hidden" name="cost" value={this.state.cost}/>
+                                <input type="hidden" name="id" value={this.state.id}/>
+                                <input type="hidden" name="hotel_name" value={this.state.hotel_name}/>
+                                <div className="row">
+                                    <div className="form-group col-md-6">
+                                        <label for="fname">Name</label>
+                                        <input id="fname" name="name" className="form-control"
+                                        value={this.state.name} onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label for="email">Email</label>
+                                        <input id="email" name="email" className="form-control"
+                                        value={this.state.email}  onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label for="phone">Phone</label>
+                                        <input id="phone" name="phone" className="form-control"
+                                        value={this.state.phone} onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="form-group col-md-6">
+                                        <label for="address">Address</label>
+                                        <input id="address" name="address" className="form-control"
+                                        value={this.state.address}  onChange={this.handleChange}/>
+                                    </div>
                                 </div>
-                                <div className="form-group col-md-6">
-                                    <label for="email">Email</label>
-                                    <input id="email" name="email" className="form-control"
-                                    value={this.state.email}  onChange={this.handleChange}/>
+                                {this.renderMenu(this.state.menuItem)}
+                                <div className="row">
+                                    <div className="col-md-12">
+                                        <h2>Total Price is Rs.{this.state.cost}</h2>
+                                    </div> 
                                 </div>
-                                <div className="form-group col-md-6">
-                                    <label for="phone">Phone</label>
-                                    <input id="phone" name="phone" className="form-control"
-                                    value={this.state.phone} onChange={this.handleChange}/>
-                                </div>
-                                <div className="form-group col-md-6">
-                                    <label for="address">Address</label>
-                                    <input id="address" name="address" className="form-control"
-                                    value={this.state.address}  onChange={this.handleChange}/>
-                                </div>
-                            </div>
-                            {this.renderMenu(this.state.menuItem)}
-                            <div className="row">
-                                <div className="col-md-12">
-                                    <h2>Total Price is Rs.{this.state.cost}</h2>
-                                </div> 
-                            </div>
-                            <button className="btn btn-success" onClick={this.checkout}>Submit</button>
+                                <button className="btn btn-success" onClick={this.checkout}
+                                type="submit">
+                                    Submit
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
