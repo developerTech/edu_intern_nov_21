@@ -9,7 +9,9 @@ class Header extends Component{
         super(props)
 
         this.state={
-            userData:''
+            userData:'',
+            username:'',
+            userImg:''
         }
     }
 
@@ -17,12 +19,31 @@ class Header extends Component{
         sessionStorage.removeItem('userInfo');
         sessionStorage.setItem('loginStatus','loggedOut');
         sessionStorage.removeItem('ltk');
-        this.setState({userData:''})
+        sessionStorage.removeItem('uName')
+        sessionStorage.removeItem('uImg')
+        this.setState({userData:'',username:"",userImg:''})
         this.props.history.push('/')
     }
 
     conditionalHeader = () => {
-        if(this.state.userData.name){
+        if(this.state.userData.name || sessionStorage.getItem('uName') !== null){
+            if(sessionStorage.getItem('uName') !== null){
+                let name = sessionStorage.getItem('uName');
+                let image = sessionStorage.getItem('uImg');
+                return(
+                    <>
+                        <Link className="btn btn-primary" to="/">
+                            <img src={image} style={{height:50,width:50}}/> &nbsp;
+                            <span className="glyphicon glyphicon-user"></span> Hi {name}
+                        </Link>
+                        &nbsp;
+                        <button className="btn btn-danger" onClick={this.handleLogout}><span className="glyphicon glyphicon-log-out"></span> 
+                            LogOut
+                        </button>
+                    </>
+                )
+
+            }else{
                 let data = this.state.userData;
                 let outArray = [data.name,data.email,data.phone,data.role]
                 sessionStorage.setItem('userInfo',outArray);
@@ -38,9 +59,13 @@ class Header extends Component{
                         </button>
                     </>
                 )
+            }     
         }else{
             return(
                 <>
+                    <a className="btn btn-info" href="https://github.com/login/oauth/authorize?client_id=930f92e500db2f4d357c">
+                        Login With Github
+                    </a> &nbsp;
                     <Link className="btn btn-primary" to="/register"><span className="glyphicon glyphicon-user"></span> Sign Up</Link>
                     &nbsp;
                     <Link className="btn btn-success" to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link>
@@ -50,6 +75,7 @@ class Header extends Component{
     }
 
     render(){
+        console.log(">>>this.state",this.state)
         return(
             <div className="header">
                 <div id="brand">
@@ -66,6 +92,38 @@ class Header extends Component{
     }
     
     componentDidMount(){
+        if(this.props.location.search){
+            // console.log("in git>>>",this.props.location.search)
+            if(this.props.location.search.split('=')[0] == '?code'){
+                var code = this.props.location.search.split('=')[1]
+            }
+
+            if(code){
+                
+                let requestedData = {
+                    code:code
+                }
+
+                fetch(`http://localhost:9900/oauth`,{
+                    method:'POST',
+                    headers:{
+                        'Accept':'application/json',
+                        'Content-Type':'application/json'
+                    },
+                    body: JSON.stringify(requestedData)
+                })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(">>>>data>>>>>",data)
+                    let username = data.name;
+                    let img = data.avatar_url;
+                    sessionStorage.setItem('uName',username)
+                    sessionStorage.setItem('uImg',img)
+                    sessionStorage.setItem('loginStatus','loggedIn')
+                    this.setState({username:username,userImg:img})
+                })
+            }
+        }
         fetch(url,{
             method:'GET',
             headers:{
